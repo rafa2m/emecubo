@@ -19,4 +19,29 @@
 	echo "id_zona => ".$datos->id_zona."<br>";
 
 
+	$nombresURL= "http://localhost/EMECUBO/API/medidas/nombres";
+	$tiposMedidasURL= "http://localhost/EMECUBO/API/medidas/lista";
+
+	$nombresJSON = file_get_contents($nombresURL);
+	$tiposMedidasJSON = file_get_contents($tiposMedidasURL);
+	
+	$nombres = json_decode($nombresJSON);
+	$tiposMedidas = json_decode($tiposMedidasJSON);
+
+	echo '<h1>Tipos de medidas</h1>';
+	
+	echo '<ul>';
+	foreach ($nombres as $nombre) {
+		echo  "<li>".$nombre."</li>";
+	}
+	echo '</ul>';
+
+
+	echo '<h2>Nombres de sensores</h2>';
+
+	foreach ($tiposMedidas as $tiposMedida) {
+		echo "-> ".$tiposMedida."<br>";
+	}
+
+
 ?>

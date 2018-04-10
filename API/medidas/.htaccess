@@ -1,0 +1,6 @@
+
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^([a-zA-Z_-]*)$ detalle.php?solicitud=$1
