@@ -1,0 +1,5 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^([^/]+)/([^/]+) sensores.php?peticion=$1&detalle=$2 [L,QSA]
