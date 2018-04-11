@@ -17,32 +17,15 @@
 	
 
 
-	function mostrar_modelo($detalle){
-		//console.log("vamos a mostrar el modelo");
-		if($detalle == "lista"){
-			
-			$resultado = mysql_query("SELECT modelo FROM sensor");
-
-		}else{
-			$resultado = mysql_query("SELECT modelo FROM sensor WHERE id=" . $detalle);
-		}
-
-		
- 
-		while ($fila = mysql_fetch_array($resultado)) {
-			$todosLosModelos[] = $fila;
-			echo $fila;
-		}
-
-		return $todosLosModelos; 
-	}
+	
 
 	function mostrar_id($detalle){
 		
 		if($detalle == "lista"){
-			$resultado = mysql_query("SELECT id FROM sensor");
+			$resultado = mysql_query("SELECT tipo,id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada,id_zona FROM sensor");
 		}else{
-			$resultado = mysql_query("SELECT id FROM sensor WHERE id=" . $detalle);
+			$resultado = mysql_query("SELECT tipo,id,marca,canal FROM sensor WHERE id=" . $detalle);
+			//$resultado = mysql_query("SELECT tipo,id,modelo,marca,canal FROM sensor WHERE id=" . $detalle);
 		}
 
 		
@@ -54,13 +37,32 @@
 		return $todosLosID; 
 	}
 
+	function mostrar_sensor($detalle){
+		if($detalle == "lista"){
+			
+			$resultado = mysql_query(" SELECT id FROM sensor ");
 
-	if( $_GET['peticion'] == 'modelo'){
+		}else{
+			$resultado = mysql_query("SELECT modelo FROM sensor WHERE id=".$detalle);
+			//$resultado = mysql_query("SELECT marca FROM sensor WHERE id=".$detalle);
+		}
 
-		$resultados = mostrar_modelo($_GET['detalle'] );
+		
+ 
+		while ($fila = mysql_fetch_array($resultado)) {
+			$todosLosModelos[] = $fila;
+			//echo $fila;
+		}
 
-	}else if($_GET['peticion'] == 'id'){
-		 
+		return $todosLosModelos; 
+	}
+
+	if( $_GET['peticion'] == 'sensor'){
+
+		$resultados = mostrar_sensor($_GET['detalle'] );
+
+	}else if($_GET['peticion'] == 'ids'){
+
 		 $resultados = mostrar_id( $_GET['detalle'] );
 
 	}else{
