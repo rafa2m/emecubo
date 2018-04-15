@@ -11,7 +11,7 @@
 	$dbhandle = mysql_connect($hostname, $username, $password) 
 	or die("No es posible conectarse a MySQL");
 
-	$seleccion = mysql_select_db("phpws") 
+	$seleccion = mysql_select_db("emecubo") 
 	or die("Base de datos no disponible");
 	
 	
@@ -40,10 +40,10 @@
 	function mostrar_sensor($detalle){
 		if($detalle == "lista"){
 			
-			$resultado = mysql_query(" SELECT id FROM sensor ");
+			$resultado = mysql_query(" SELECT id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada FROM sensor ");
 
 		}else{
-			$resultado = mysql_query("SELECT modelo FROM sensor WHERE id=".$detalle);
+			$resultado = mysql_query("SELECT modelo FROM sensor WHERE id='".$detalle."'");
 			//$resultado = mysql_query("SELECT marca FROM sensor WHERE id=".$detalle);
 		}
 
