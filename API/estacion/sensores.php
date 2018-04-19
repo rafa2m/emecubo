@@ -57,6 +57,7 @@
 		return $todosLosModelos; 
 	}
 
+	
 	if( $_GET['peticion'] == 'sensor'){
 
 		$resultados = mostrar_sensor($_GET['detalle'] );
