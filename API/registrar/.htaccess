@@ -1,0 +1,5 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^([^/]+)/([^/]+) que.php?peticion=$1&detalle=$2 

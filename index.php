@@ -38,12 +38,23 @@
 
 				$nombresURL= "http://localhost/EMECUBO/API/medidas/nombres";
 				$tiposMedidasURL= "http://localhost/EMECUBO/API/medidas/lista";
+				$obtenerSensoresURL="http://localhost/EMECUBO2/API/obtener/sensores/lista";
 
 				$nombresJSON = file_get_contents($nombresURL);
 				$tiposMedidasJSON = file_get_contents($tiposMedidasURL);
+				$obtenerSensoresJSON = file_get_contents($obtenerSensoresURL);
 				
 				$nombres = json_decode($nombresJSON);
 				$tiposMedidas = json_decode($tiposMedidasJSON);
+				$obtenerSensores = json_decode($obtenerSensoresJSON);
+
+				echo '<h1>Sensores</h1>';
+				
+				echo '<ul>';
+				foreach ($obtenerSensores as $obtenerSensore) {
+					echo  "<li>".$obtenerSensore."</li>";
+				}
+				echo '</ul>';
 
 				echo '<h1>Tipos de medidas</h1>';
 				

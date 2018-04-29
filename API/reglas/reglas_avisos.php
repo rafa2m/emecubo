@@ -20,16 +20,16 @@
 	
 
 	function mostrar_activacion($detalle){
-		
+		$resultado ;
 		if($detalle == "lista"){
-			$resultado = mysql_query("SELECT idactivador FROM reglaactivacion");
+			$resultado = mysql_query("SELECT idactivador FROM reglaaviso");
 		}else{
-			$resultado = mysql_query("SELECT idactivador FROM reglaactivacion WHERE tipoactivador=".$detalle;
-			//$resultado = mysql_query("SELECT tipo,id,modelo,marca,canal FROM sensor WHERE id=" . $detalle);
+			$resultado = mysql_query("SELECT idactivador FROM reglaav WHERE tipoactivador=".$detalle);
+			
 		}
 
 		
- 
+		$todosLosID =[];
 		while ($fila = mysql_fetch_array($resultado)) {
 			$todosLosID[] = $fila;
 		}
@@ -44,7 +44,7 @@
 
 		}else{
 			$resultado = mysql_query("SELECT fecha_creada,periodicidad_incidencia,secuencial,estado,email FROM reglaaviso WHERE email='".$detalle."'");
-			//$resultado = mysql_query("SELECT marca FROM sensor WHERE id=".$detalle);
+			
 		}
 
 		
@@ -57,11 +57,28 @@
 		return $todosLosModelos; 
 	}
 
-	if( $_GET['peticion'] == 'avisos'){
+	function obtener_medidas($detalle){
+		if($detalle == "lista"){
+			
+			$resultado = mysql_query(" SELECT fecha_creada,periodicidad_incidencia,secuencial,estado,email FROM reglaaviso ");
 
+		}else{
+			$resultado = mysql_query("SELECT fecha_creada,periodicidad_incidencia,secuencial,estado,email FROM reglaaviso WHERE email='".$detalle."'");
+			
+		}
+	}
+
+	if( $_GET['peticion'] == 'avisos'){
+		//echo "hola";
 		$resultados = mostrar_avisos($_GET['detalle'] );
 
-	}else if($_GET['peticion'] == 'activacion'){
+	}
+	if( $_GET['peticion'] == 'medidas'){
+
+		$resultados = obtener_medidas($_GET['detalle'] );
+
+	}
+	if($_GET['peticion'] == 'activacion'){
 
 		 $resultados = mostrar_activacion( $_GET['detalle'] );
 

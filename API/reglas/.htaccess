@@ -1,0 +1,5 @@
+Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+
+RewriteRule ^([^/]+)/([^/]+) reglas_avisos.php?peticion=$1&detalle=$2 [L,QSA]
