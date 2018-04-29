@@ -16,31 +16,10 @@
 	
 	
 
-	header('Content-Type: application/json');
- 
-	// function mostrar_datos_sensor(){
 
-	// 	$sensor = array(
-	// 		"id"=>"sensor DHT22",
-	// 		"tipo"=>"Sensor de humedad",// es un bigint 
-	// 		"marca"=>"RoarKit",
-	// 		"modelo"=>"AM2302",
-	// 		"observacion"=>"Con agujeros de tornillo fijos, instalación y fijación convenientes. Diámetro de 2.6mm",
-	// 		"tipo_comunicacion"=>"Sensor analógico",
-	// 		"formato_integracion"=>"5",// es un entero 
-	// 		"canal"=>"1",// es un entero 
-	// 		"estado"=>"1",// es un entero 
-	// 		"potencia_soportada"=>"3v - 5.5V",
-	// 		"id_zona"=>"zona A"
-	// 	);
-
-	// 	return $sensor;
-	// }
-	// echo json_encode( mostrar_datos_sensor());
-	
 	
 
-	function mostrar($detalle){
+	function mostrar_id($detalle){
 		
 		if($detalle == "lista"){
 			$resultado = mysql_query("SELECT tipo,id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada FROM sensor");
@@ -58,11 +37,46 @@
 		return $todosLosID; 
 	}
 
-	
+	function mostrar_sensor($detalle){
+		if($detalle == "lista"){
+			
+			$resultado = mysql_query(" SELECT  idsensor  FROM medidasensor ");
 
-	if( $_GET['peticion'] == 'hola'){
+		}else{
+			$resultado = mysql_query("SELECT nombre FROM medidasensor WHERE idsensor='".$detalle."'");
+			//$resultado = mysql_query("SELECT marca FROM sensor WHERE id=".$detalle);
+		}
 
-		$resultados = mostrar($_GET['detalle'] );
+		
+ 
+		while ($fila = mysql_fetch_array($resultado)) {
+			$todosLosModelos[] = $fila;
+			//echo $fila;
+		}
+
+		return $todosLosModelos; 
+	}
+
+	function guardar_datos_sensor(){
+
+		mysql_query("INSERT INTO medidasensor (fecha_medida,nombre,fechaconfigsensor,idsensor,tiposensor,marcasensor,modelosensor,idestacion,valor) 
+			VALUES ('".$_POST['fecha_medida']."', '".$_POST['nombre']."','".$_POST['fechaconfigsensor']."','".$_POST['idsensor']."','".$_POST['tiposensor']."','".$_POST['marcasensor']."','".$_POST['modelosensor']."','".$_POST['idestacion']."','".$_POST['valor']."')");
+		//INSERT INTO `medidasensor` (`fecha_medida`, `nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `valor`) VALUES ('2018-04-19 00:00:00', 'sensor de prueba 1', '2018-04-19 00:00:00', 'sp1', '1', 'marca de prueba', 'modelo de prueba', 'est1', '29');
+
+		header('Location: ../../../');
+
+		exit;
+	}
+	if( $_GET['peticion'] == 'sensor'){
+		if( $_GET['detalle'] == 'nuevo'){
+			guardar_datos_sensor();
+		}
+
+	}	 
+
+	if( $_GET['peticion'] == 'sensores'){
+
+		$resultados = mostrar_sensor($_GET['detalle'] );
 
 	}else{
 		 

@@ -14,11 +14,6 @@
 	$seleccion = mysql_select_db("emecubo") 
 	or die("Base de datos no disponible");
 	
-	
-
-
-	
-
 	function mostrar_id($detalle){
 		
 		if($detalle == "lista"){
