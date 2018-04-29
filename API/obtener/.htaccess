@@ -1,5 +1,6 @@
 Options +FollowSymLinks -MultiViews
 
 RewriteEngine On
-
-RewriteRule ^([^/]+)/([^/]+) que.php?peticion=$1&detalle=$2 
+RewriteBase /API/obtener/
+#RewriteRule ^([a-zA-Z0-9_-]+)$ que.php?medidas=$1 [R=301] 
+RewriteRule ^([^/]+)/([^/]+) que.php?medidas=$1&de=$2 [L,QSA]

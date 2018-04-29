@@ -1,11 +1,13 @@
 Options +FollowSymLinks -MultiViews
 
 RewriteEngine On
-RewriteBase /API/estacion/
+RewriteBase /API/sensor/
 #RewriteRule ^([^/]+) que.php?sensorID=$1 [L,QSA]
 #RewriteRule ^/articulo/(.*)$ /index.php?title=$1
 #RewriteRule ^index.html+$ /API/sensor/dht22.php?title=$1 [R=301]
 
 #http://localhost/EMECUBO/API/sensor/index.html
 
-RewriteRule ^([a-zA-Z0-9_-]+)$ que.php?estacionID=$1 [R=301]
+RewriteRule ^([a-zA-Z0-9_-]+)$ que.php?sensorID=$1 [R=301]
+
+

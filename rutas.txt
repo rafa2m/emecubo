@@ -33,3 +33,4 @@
 		- $ Incidencias
 	- // Regla Activación
 		- $ Activación
+** http://emecubo.extremepromotionsproject.xyz/API/obtener/

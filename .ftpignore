@@ -1,0 +1,8 @@
+{
+    "type": "sftp",
+    "host": "home380803416.1and1-data.host",
+    "user": "u65236019-aquelo",
+    "password": "Pa56word",
+    "port": "22",
+    "remotePath": "/"
+}
