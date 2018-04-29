@@ -1,0 +1,35 @@
+/ API
+	- // Estacion
+		- /// Sensor
+			- //// Configuración sensor
+			- //// Tipo medida (dudas)
+				- $ Medida
+				- ///// Regla activación
+					- $ Activación
+				- ///// Regla de aviso
+					- $ Inicidencias
+			- //// Modelo dispositivo
+				- $ Tipo de dispositivo
+				- $ Actuador
+				- $ Activador
+		- /// Activador
+			- //// Regla de activación
+				- $ Activación
+	- // Tipo de dispositivo
+		- /// Modelo de dispositivo
+			- //// Sensor
+				- ///// Configuración sensor
+				- ///// Tipo medida (dudas)
+					- $ Medida
+					- ////// Regla activación
+						- $ Activación
+					- ////// Regla de aviso
+						- $ Inicidencias
+			- //// Activador
+				- ///// Regla de activación
+					- $ Activación
+			- $ Actuador
+	- // Reglas Aviso
+		- $ Incidencias
+	- // Regla Activación
+		- $ Activación
