@@ -15,9 +15,14 @@ or die("Base de datos no disponible");
 
 function mostrar()
 {
+    if(($_GET["op2"])=="estacion"){
+        $resultado = mysql_query("SELECT tipo,id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada FROM sensor ");    
+    }else{
+        $resultado = mysql_query("SELECT tipo,id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada FROM sensor");
 
-    $resultado = mysql_query("SELECT tipo,id,marca,canal,tipo_comunicacion,formato_integracion,canal,estado,potencia_soportada FROM sensor");
-
+    }
+    
+    
     while ($fila = mysql_fetch_array($resultado)) {
         $todosLosID[] = $fila;
     }
@@ -43,11 +48,15 @@ if ($_GET["op"] == "hola") {
 if ($_GET["op"] == "dame") {
 
     if ($_GET["op1"] == "sensor"){
-        echo "Sensor =>> " .($_GET["op2"]);
+        //echo "Sensor =>> " .($_GET["op2"]);
+        //echo var_dump($final = mostrar());
+        //echo $final = mostrar();
+        $resultados = mostrar();
     }
     //echo "respuesta de obtener: " . ($_GET["op1"])." ". ($_GET["op2"]);
     if (($_GET["op1"]) && (!is_string($_GET["op2"]))  ){
         echo "respuesta de obtener: " . ($_GET["op1"])." ". ($_GET["op2"]);
+        
     }
     if (($_GET["op1"]) && (is_numeric($_GET["op2"])) && (isset($_GET["op3"])) ){
         echo "respuesta de obtener: " . ($_GET["op1"])." ". ($_GET["op2"]." ". ($_GET["op3"]));
@@ -59,4 +68,6 @@ if ($_GET['op'] == 'inserta') {
 
     echo "insertamos datos en la bbdd: " . ($_GET["op1"]. " " . $_GET["op2"]);
 } 
+
+echo json_encode( $resultados );
 
