@@ -27,8 +27,12 @@ Canal    = 3   }  ? BD => ConfigSensor
                             Nombre = H
                             Nombre = Humendad
 ## 3- Obtener medidas (app)
-**http://emecubo.extremepromotionsproject.xyz/API/obtener/
+	http://emecubo.extremepromotionsproject.xyz/API/obtener/
 ## 4- Obtener configuración sensor (app) (Reglas incluidas)
+	http://emecubo.extremepromotionsproject.xyz/API/obtener/configsensor/AN1
 ## 5- Obtener configuración estación (app)
+	http://emecubo.extremepromotionsproject.xyz/API/obtener/configestacion/STC1
 ## 6- Obtener configuración sensores (app)
+	http://emecubo.extremepromotionsproject.xyz/API/obtener/configsensor/AN1  
 ## 7- Obtener avisos incidencias
+	http://emecubo.extremepromotionsproject.xyz/API/obtener/avisos/javiealiaga@gmail.com

@@ -44,22 +44,53 @@ header('Content-Type: application/json;charset=utf-8');
             }
         }
     }    
-    if($_REQUEST['medidas']=='sensor'){
-           
+    if($_REQUEST['medidas']=='configsensor'){
+            //echo "hola";
             if(isset($_GET['de'])){
-                if($_GET['de']=='th2'){
-                     //echo "aaaaaaaaa";
-                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/sensor/th2    
-                    $res = $mysqli->query("SELECT T2.fechahora as Configuracion_activa, T1.id, T1.tipo, T1.marca
-                    FROM sensor T1 INNER JOIN configuracionsensor T2 ON T1.id = T2.id  ");
+                
+                     
+                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/configsensor/AN1  
+                    $res = $mysqli->query("select idsensor,fechareglaaviso, T2.periodicidad_incidencia, T2.secuencial, T2.estado,T2.email, T2.observacion from 
+                    tipomedidasensor T1 inner join reglaaviso T2 on T1.fechareglaaviso = T2.fecha_creada 
+                    WHERE `idsensor` = '".$_GET['de']."'");
                     
                     while($row = $res->fetch_object()){
                         $todosLasEstaciones[] = $row;
                     }
-                }
+                
             }
-
-        
+            
+    }
+    if($_REQUEST['medidas']=='configestacion'){
+            //echo "hola";
+            if(isset($_GET['de'])){
+                
+                     
+                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/configestacion/STC1  
+                    $res = $mysqli->query("select fechahora,id tipo, marca,modelo,idestacion from configuracionsensor
+                    WHERE `idestacion` = '".$_GET['de']."'");
+                    
+                    while($row = $res->fetch_object()){
+                        $todosLasEstaciones[] = $row;
+                    }
+                
+            }
+            
+    }
+    if($_REQUEST['medidas']=='avisos'){
+            echo "hola";
+            if(isset($_GET['de'])){
+                
+                     
+                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/avisos/javiealiaga@gmail.com  
+                    $res = $mysqli->query("select email,estado, fecha_Creada, observacion,periodicidad_incidencia,secuencial from reglaaviso
+                    WHERE `email` = '".$_GET['de']."'");
+                    
+                    while($row = $res->fetch_object()){
+                        $todosLasEstaciones[] = $row;
+                    }
+                
+            }
             
     }
     //else primero     

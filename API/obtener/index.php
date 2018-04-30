@@ -124,8 +124,7 @@ var animal = seleccionado.getAttribute('data-type');
     http://emecubo.extremepromotionsproject.xyz/API/obtener/
 uno seria el metodo load. rescata datos generados por, en este caso, generaHTML.php y lo asigna a un div (divSelDias).
 
-Código javascript:
-Ver original
+
 <script type="text/javascript">
  $(document).ready(function(){ //así es como se crean las funciones jQuery. solo cree
   $("#selMeses").change(function(){ //se ejecuta con el evento onChange
