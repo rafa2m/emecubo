@@ -1,5 +1,8 @@
 Options +FollowSymLinks -MultiViews
 
 RewriteEngine On
-
-RewriteRule ^([^/]+)/([^/]+) que.php?peticion=$1&detalle=$2 
+RewriteBase /API/registrar/
+#RewriteRule ^([a-zA-Z0-9_-]+)$ que.php?estacion=$1 [R=301] 
+RewriteRule ^([^/]+)/([^/]+)/(.*)/([^/]+) que.php?idestacion=$1&nombre=$2&fechaconfigsensor=$3&idsensor=$4&tiposensor=$5&marcasensor=$6&modelosensor=$7&valor=$8 [L,QSA]
+##RewriteRule ^([^/]+)/(.*)/(.*) que.php?idestacion=$1&fechaconfigsensor=$2 [QSA,L] 
+#RewriteRule ^([^/]+)/(.*)/([^/]+) que.php?idestacion=$1&fechaconfigsensor=$2 [QSA,L] 

@@ -42,7 +42,7 @@
         </div>';
         exit();
         //<div class='alert alert-success'>conexion ko</div>";
-    } else {
+    }else {
          echo '
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -60,16 +60,23 @@
         </a> o selecciona elige una estacion m3 a ver:
     </p>
     <?php
+        
+        //if you're looking to store the current time just use MYSQL's functions.
+        // mysql_query("INSERT INTO `table` (`dateposted`) VALUES (now())");
+        //If you need to use PHP to do it, the format it Y-m-d H:i:s so try
+
+        
+        //mysql_query("INSERT INTO `table` (`dateposted`) VALUES ('$date')");
         /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
         $consulta = "SELECT id FROM estacion";
         $resultado = mysqli_query($mysqli, $consulta);
 
         echo "<div class='form-group'>";
             //cargamos el valor y lo enviamos a la url
-            echo "<select id='sensores' onchange='location = this.value ' class='form-control'>";
-    while ($lista = mysqli_fetch_array($resultado)) {
-        echo "<option>" . $lista["id"] . "</option>";
-    }
+            echo "<select id='sensores' onchange='location = this.value?this.value ' class='form-control'>";
+            while ($lista = mysqli_fetch_array($resultado)) {
+                echo "<option>" . $lista["id"] . "</option>";
+            }
             
             echo "</select>";
         echo "</div>";
