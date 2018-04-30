@@ -50,6 +50,22 @@ header('Content-Type: application/json;charset=utf-8');
                 
                      
                     // http://emecubo.extremepromotionsproject.xyz/API/obtener/configsensor/AN1  
+                    $res = $mysqli->query("select id as id_solicitado, fechahora,tipo,marca,modelo,idestacion,altura,calibracion,offset,slope,fechafinconfig from configuracionsensor 
+                    WHERE `id` = '".$_GET['de']."'");
+                    
+                    while($row = $res->fetch_object()){
+                        $todosLasEstaciones[] = $row;
+                    }
+                
+            }
+            
+    }
+    if($_REQUEST['medidas']=='configsensor_regla'){
+            //echo "hola";
+            if(isset($_GET['de'])){
+                
+                     
+                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/configsensor_regla/AN1  
                     $res = $mysqli->query("select idsensor,fechareglaaviso, T2.periodicidad_incidencia, T2.secuencial, T2.estado,T2.email, T2.observacion from 
                     tipomedidasensor T1 inner join reglaaviso T2 on T1.fechareglaaviso = T2.fecha_creada 
                     WHERE `idsensor` = '".$_GET['de']."'");

@@ -42,7 +42,7 @@
         </div>';
         exit();
         //<div class='alert alert-success'>conexion ko</div>";
-    } else {
+    }else {
          echo '
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -66,10 +66,10 @@
 
         echo "<div class='form-group'>";
             //cargamos el valor y lo enviamos a la url
-            echo "<select id='sensores' onchange='location = this.value ' class='form-control'>";
-    while ($lista = mysqli_fetch_array($resultado)) {
-        echo "<option>" . $lista["id"] . "</option>";
-    }
+            echo "<select id='sensores' onchange='location = this.value?this.value ' class='form-control'>";
+            while ($lista = mysqli_fetch_array($resultado)) {
+                echo "<option>" . $lista["id"] . "</option>";
+            }
             
             echo "</select>";
         echo "</div>";
