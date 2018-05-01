@@ -21,7 +21,7 @@
     //echo $date1;
 
     $recogido = $_REQUEST['idestacion'];
-    echo "------------------<br>";
+    //echo "------------------<br>";
     echo $estacion = $_GET['idestacion']."<br>";
     echo $nombre = $_GET['nombre']."<br>";
     echo $fechaconfigsensor = $_GET['fechaconfigsensor']."<br>";
@@ -35,11 +35,16 @@
 
 //    idestacion=$1&nombre=$2&fechaconfigsensor=$3&idsensor=$4&tiposensor=$5&marcasensor=$6&modelosensor=$7&valor=$8
 
-   /*  $insertar = "INSERT INTO `db732013555`.`medidasensor` (`fecha_medida`, `nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `valor`) 
-    VALUES ('2018-04-30 00:00:00', 'sa1', '2018-04-15 00:00:00', 'AN1', '2', 'ANEMO KMS', 'MODELO - 1 ', 'STC1', '20');"; */
+    $consulta = "INSERT INTO `medidasensor` (`fecha_medida`, `nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `valor`) VALUES
+    ('2018-04-30 00:00:00', 'sa1', '2018-04-15 00:00:00', 'AN1', 2, 'ANEMO KMS', 'MODELO - 1 ', 'STC1', '0.000')"; 
+    // $insertar = "INSERT INTO `db732013555`.`medidasensor` (`fecha_medida`, `nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `valor`) 
+    // VALUES ('2018-04-30 00:00:00', 'sa1', '2018-04-15 00:00:00', 'AN1', '2', 'ANEMO KMS', 'MODELO - 1 ', 'STC1', '20');"; 
+    //$consulta = "SELECT id FROM estacion";
+    $resultado = mysqli_query($mysqli, $consulta);
+
     if(isset($_GET['idsensor'])){
         
-       echo "hola";
+      // echo "hola";
         
     }
 
