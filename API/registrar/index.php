@@ -21,12 +21,12 @@
 <div class="container">
 <div class="row ">
     <div class="col-12 page-header">
-        <h1 class="center text-center">Insercción de medidas de Sensores </h1>
+        <h1 class="center text-center">Insercción medidas de Sensores </h1>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-md-12 col-lg-8 md-auto">   
+    
+    <div class="col-md-12  md-auto">   
         <p>
         <?php
 
@@ -54,8 +54,8 @@
     
         <p>
             <a href="#" onClick="window.open('http://emecubo.extremepromotionsproject.xyz/API/obtener/lista/sensores','popup', 'width=400px,height=400px')">
-                Ver de cada instalación una lista de sensores en cada 
-            </a> o selecciona elige una estacion m<sup>3</sup> a ver:
+                Ver de cada instalación m<sup>3</sup> una lista de sensores en cada una
+            </a> o selecciona manualmente la configuración de la medida a registrar :
         </p>
         <form action="carga.php" method="GET">
             <div class="form-group">

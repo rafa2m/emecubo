@@ -55,16 +55,52 @@
 
     <p>
         <a href="#" onClick="window.open('http://emecubo.extremepromotionsproject.xyz/API/obtener/lista/sensores','popup', 'width=400px,height=400px')">
-            Ver de cada instalación una lista de sensores en cada 
-        </a> o selecciona elige una estacion m3 a ver:
+            Ver de cada instalación una lista de sensores que tiene 
+        </a> o selecciona el detalle a ver de m<sup>3</sup> :
     </p>
+    
+
+     <?php
+        /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
+        $consulta = "SELECT nombre FROM tipomedidasensor ";
+        $resultado = mysqli_query($mysqli, $consulta);
+
+        echo "<div class='form-group'>";
+        echo "<label for='tipomedidasensor' >Obtener tipomedidasensor</label>";
+            //cargamos el valor y lo enviamos a la url
+            echo "<select id='tipomedidasensor' name='tipomedidasensor' onchange='location = this.value ' class='form-control'>";
+            echo "<option> Elija una </option>";
+            while ($lista = mysqli_fetch_array($resultado)) {
+                echo "<option value='../../API/obtener/sensor/". $lista["nombre"] ."'>" . $lista["nombre"] . "</option>";
+            }
+            
+            echo "</select>";
+        echo "</div>";
+    ?>
+    <?php
+        /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
+        $consulta = "SELECT id FROM configuracionsensor ";
+        $resultado = mysqli_query($mysqli, $consulta);
+
+        echo "<div class='form-group'>";
+        echo "<label for='configuracionsensor' >Obtener configuracionsensor</label>";
+            //cargamos el valor y lo enviamos a la url
+            echo "<select id='configuracionsensor' name='configuracionsensor' onchange='location = this.value ' class='form-control'>";
+            echo "<option> Elija uno </option>";
+            while ($lista = mysqli_fetch_array($resultado)) {
+                echo "<option value='../../API/obtener/configsensor/". $lista["id"] ."'>" . $lista["id"] . "</option>";
+            }
+            
+            echo "</select>";
+        echo "</div>";
+    ?>
     <?php
         /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
         $consulta = "SELECT id FROM estacion order by id DESC";
         $resultado = mysqli_query($mysqli, $consulta);
 
         echo "<div class='form-group'>";
-        echo "<label for='estaciones' >Estaciones</label>";
+        echo "<label for='estaciones' >Obtener configuración estación</label>";
             //cargamos el valor y lo enviamos a la url
             echo "<select id='estaciones' name='estaciones' onchange='location = this.value ' class='form-control'>";
             echo "<option> Elija una </option>";
@@ -75,19 +111,18 @@
             echo "</select>";
         echo "</div>";
     ?>
-
-     <?php
+    <?php
         /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
-        $consulta = "SELECT nombre FROM tipomedidasensor ";
+        $consulta = "SELECT email FROM reglaaviso ";
         $resultado = mysqli_query($mysqli, $consulta);
 
         echo "<div class='form-group'>";
-        echo "<label for='tipomedidasensor' >tipomedidasensor</label>";
+        echo "<label for='reglaaviso' >Obtener regla de aviso</label>";
             //cargamos el valor y lo enviamos a la url
-            echo "<select id='tipomedidasensor' name='tipomedidasensor' onchange='location = this.value ' class='form-control'>";
-            echo "<option> Elija una </option>";
+            echo "<select id='reglaaviso' name='reglaaviso' onchange='location = this.value ' class='form-control'>";
+            echo "<option> Elija uno </option>";
             while ($lista = mysqli_fetch_array($resultado)) {
-                echo "<option value='../../API/obtener/sensor/". $lista["nombre"] ."'>" . $lista["nombre"] . "</option>";
+                echo "<option value='../../API/obtener/avisos/". $lista["email"] ."'>" . $lista["email"] . "</option>";
             }
             
             echo "</select>";

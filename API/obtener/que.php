@@ -121,13 +121,15 @@ header('Content-Type: application/json;charset=utf-8');
             
     }
     if($_REQUEST['medidas']=='avisos'){
-            echo "hola";
+            //echo "hola";
             if(isset($_GET['de'])){
                 
                      
                     // http://emecubo.extremepromotionsproject.xyz/API/obtener/avisos/javiealiaga@gmail.com  
-                    $res = $mysqli->query("select email,estado, fecha_Creada, observacion,periodicidad_incidencia,secuencial from reglaaviso
-                    WHERE `email` = '".$_GET['de']."'");
+                    $res = $mysqli->query("select email,estado, fecha_Creada, observacion,periodicidad_incidencia,secuencial, 
+                    fecha_incidencia as Tabla_INCIDENCIA ,detalles,resultado,fechareglaaviso
+                    from reglaaviso T1
+                    inner join incidencia T2 ON T1.fecha_creada = T2.fechareglaaviso WHERE `email` = '".$_GET['de']."'");
                     
                     while($row = $res->fetch_object()){
                         $todosLasEstaciones[] = $row;
