@@ -17,12 +17,12 @@
 <div class="row ">
     <div class="col-12 page-header">
 
-        <h1 class="center">Redirección Sensores </h1>
+        <h1 class="center">Redirecciones </h1>
     </div>
 </div>
 <div class="row">
-<div class="col-md-4 .ml-auto">   
-    <p>
+<div class="col ml-auto">   
+    <p class="text-center">
     <?php
 
     $username = "dbo732013555";
@@ -36,7 +36,7 @@
     /* comprobamos la conexión */
     if ($mysqli->connect_errno) {
         echo '
-        <div class="alert alert-danger alert-dismissable">
+        <div class="alert alert-danger alert-dismissable text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>¡Oopsss...!</strong> La conexión no falló.
         </div>';
@@ -44,7 +44,7 @@
         //<div class='alert alert-success'>conexion ko</div>";
     }else {
          echo '
-        <div class="alert alert-success alert-dismissable">
+        <div class="alert alert-success alert-dismissable text-center">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <strong>¡Enhorabuena!</strong> Todo ha ido genial.
         </div>';
@@ -52,8 +52,7 @@
     }
     ?>
     </p>
-</div>
-<div class="col-md-6 .md-auto">
+
     <p>
         <a href="#" onClick="window.open('http://emecubo.extremepromotionsproject.xyz/API/obtener/lista/sensores','popup', 'width=400px,height=400px')">
             Ver de cada instalación una lista de sensores en cada 
@@ -61,14 +60,34 @@
     </p>
     <?php
         /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
-        $consulta = "SELECT id FROM estacion";
+        $consulta = "SELECT id FROM estacion order by id DESC";
         $resultado = mysqli_query($mysqli, $consulta);
 
         echo "<div class='form-group'>";
+        echo "<label for='estaciones' >Estaciones</label>";
             //cargamos el valor y lo enviamos a la url
-            echo "<select id='sensores' onchange='location = this.value ' class='form-control'>";
+            echo "<select id='estaciones' name='estaciones' onchange='location = this.value ' class='form-control'>";
+            echo "<option> Elija una </option>";
             while ($lista = mysqli_fetch_array($resultado)) {
                 echo "<option value='../../API/obtener/estacion/". $lista["id"] ."'>" . $lista["id"] . "</option>";
+            }
+            
+            echo "</select>";
+        echo "</div>";
+    ?>
+
+     <?php
+        /* realizamoms el select para mostrar en el select y pasarlos como parametro*/
+        $consulta = "SELECT nombre FROM tipomedidasensor ";
+        $resultado = mysqli_query($mysqli, $consulta);
+
+        echo "<div class='form-group'>";
+        echo "<label for='tipomedidasensor' >tipomedidasensor</label>";
+            //cargamos el valor y lo enviamos a la url
+            echo "<select id='tipomedidasensor' name='tipomedidasensor' onchange='location = this.value ' class='form-control'>";
+            echo "<option> Elija una </option>";
+            while ($lista = mysqli_fetch_array($resultado)) {
+                echo "<option value='../../API/obtener/sensor/". $lista["nombre"] ."'>" . $lista["nombre"] . "</option>";
             }
             
             echo "</select>";

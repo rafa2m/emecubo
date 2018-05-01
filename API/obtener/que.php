@@ -17,7 +17,18 @@ header('Content-Type: application/json;charset=utf-8');
 	$mysqli->set_charset("utf8");
 	/* comprobar la conexión */
     $recogido = $_REQUEST['medidas'];
-
+    if($_REQUEST['medidas']=='sensor'){
+       // echo "asdfdas";
+        if(isset($_GET['de'])){
+            
+            // http://emecubo.extremepromotionsproject.xyz/API/obtener/sensor/sa1    
+            $res = $mysqli->query("SELECT fecha_medida,nombre,fechaconfigsensor,idsensor,tiposensor,marcasensor,modelosensor,idestacion,valor from medidasensor where nombre='".$_GET['de']."'");
+            
+            while($row = $res->fetch_object()){
+                $todosLasEstaciones[] = $row;
+            }
+        }
+    }
     if($_REQUEST['medidas']=='lista'){
 
         if(isset($_GET['de'])){
