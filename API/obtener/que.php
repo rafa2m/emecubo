@@ -112,7 +112,7 @@ header('Content-Type: application/json;charset=utf-8');
     //else primero     
     else {
 
-        echo "errrooRRR!!!";
+        //cho "errrooRRR!!!";
     }
     //}// cierre si existe sensores
     

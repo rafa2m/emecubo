@@ -17,7 +17,7 @@
 <div class="row ">
     <div class="col-12 page-header">
 
-        <h1 class="center">Prueba de redirección Sensores </h1>
+        <h1 class="center">Redirección Sensores </h1>
     </div>
 </div>
 <div class="row">
