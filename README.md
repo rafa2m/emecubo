@@ -29,6 +29,10 @@ Canal    = 3   }  ? BD => ConfigSensor
                             Nombre = Temperatura
                             Nombre = H
                             Nombre = Humendad
+#
+    http://emecubo.extremepromotionsproject.xyz/API/registrar/
+#	
+	
 	http://emecubo.extremepromotionsproject.xyz/API/registrar/STC1/sa1/2018-04-15%2000:00:00/AN1/2/ANEMO%20KMS/MODELO%20-%201/STC1/20.000
 ## 3- Obtener medidas (app)
 	http://emecubo.extremepromotionsproject.xyz/API/obtener/	
