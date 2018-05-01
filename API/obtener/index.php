@@ -5,9 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Operaciones con sensores</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    
+    
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script> -->
@@ -171,6 +179,58 @@ var animales = document.getElementById('animales');
 var seleccionado = animales.options[animales.selectedIndex];
 var animal = seleccionado.getAttribute('data-type');
 </script> -->
+<div class="container">
+<div class="row">
+        <div class="col">
+            <h3>Gráfica ficticia</h3>
+            <div id="myfirstchart" style="height: 250px;"></div>
+            <div id="area-example" style="height: 250px;"></div>
+            <script>
+            
+                    Morris.Area({
+                    element: 'area-example',
+                    data: [
+                        { y: '2018-05-01 15:00:00', a: 100, b: 90 },
+                        { y: '2018-05-01 15:10:00', a: 75,  b: 65 },
+                        { y: '2018-05-01 15:20:00', a: 50,  b: 40 },
+                        { y: '2018-05-01 15:30:00', a: 75,  b: 65 },
+                        { y: '2018-05-01 15:40:00', a: 50,  b: 40 },
+                        { y: '2018-05-01 15:50:00', a: 75,  b: 65 },
+                        { y: '2018-05-01 16:00:00', a: 100, b: 90 }
+                    ],
+                    xkey: 'y',
+                    ykeys: ['a', 'b'],
+                    labels: ['Sensor A', 'Sensor B']
+                    });
+                    
+              
+                    var grafica=new Morris.Line({
+                        // ID of the element in which to draw the chart.
+                        element: 'myfirstchart',
+                        // Chart data records -- each entry in this array corresponds to a point on
+                        // the chart.
+                        data: [
+                            { year: '2018-05-01 15:00:00', value: 20 },
+                            { year: '2018-05-01 15:10:00', value: 10 },
+                            { year: '2018-05-01 15:20:00', value: 5 },
+                            { year: '2018-05-01 15:30:00', value: 28 },
+                            { year: '2018-05-01 15:40:00', value: 20 }
+                        ],
+                        // The name of the data record attribute that contains x-values.
+                        xkey: 'year',
+                        // A list of names of data record attributes that contain y-values.
+                        ykeys: ['value'],
+                        // Labels for the ykeys -- will be displayed when you hover over the
+                        // chart.
+                        labels: ['temperatura']
+                        });
+                              
+            </script>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 

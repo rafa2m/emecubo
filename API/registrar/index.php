@@ -218,13 +218,14 @@
             </div>
             <div class="form-group">
                 <label for="valor" ><span class="text-bold h2">Valor</span></label>
-                <input type="text" name="valor"  class="form-control" placeholder="ejemplo de valor: 21.00" required/>
+                <input type="numeric" name="valor"  class="form-control" placeholder="ejemplo de valor: 21.00" required/>
                 
             </div>
             <div class="row">
                 
-                <div class="col-md-12 text-right">
-                    <input type="submit" value="Guardar medida" class="btn btn-primary" >
+                <div class="col-md-12 text-right" >
+                    <input type="submit" value="Guardar medida" class="btn btn-primary mb-5" >
+
                 </div>
             </div>
         </form>
