@@ -93,6 +93,22 @@ header('Content-Type: application/json;charset=utf-8');
             }
             
     }
+    if($_REQUEST['medidas']=='estacion'){
+            //echo "hola";
+            if(isset($_GET['de'])){
+                
+                      
+                    // http://emecubo.extremepromotionsproject.xyz/API/obtener/estacion/STC1  
+                    $res = $mysqli->query("select id,longitud,latitud,altura,fecha,nombre_corto,observacion,altitud,idlogger from estacion
+                    WHERE `id` = '".$_GET['de']."'");
+                    
+                    while($row = $res->fetch_object()){
+                        $todosLasEstaciones[] = $row;
+                    }
+                
+            }
+            
+    }
     if($_REQUEST['medidas']=='avisos'){
             echo "hola";
             if(isset($_GET['de'])){

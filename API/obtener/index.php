@@ -66,9 +66,9 @@
 
         echo "<div class='form-group'>";
             //cargamos el valor y lo enviamos a la url
-            echo "<select id='sensores' onchange='location = this.value?this.value ' class='form-control'>";
+            echo "<select id='sensores' onchange='location = this.value ' class='form-control'>";
             while ($lista = mysqli_fetch_array($resultado)) {
-                echo "<option>" . $lista["id"] . "</option>";
+                echo "<option value='../../API/obtener/estacion/". $lista["id"] ."'>" . $lista["id"] . "</option>";
             }
             
             echo "</select>";
