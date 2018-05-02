@@ -10,9 +10,11 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
     <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
     
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
     
     
+
+   <script src="https://code.jquery.com/jquery-1.12.4.js" integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU=" crossorigin="anonymous"></script>
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
@@ -186,10 +188,74 @@ var animal = seleccionado.getAttribute('data-type');
             <div id="myfirstchart" style="height: 250px;"></div>
             <div id="area-example" style="height: 250px;"></div>
             <script>
-            
-                    Morris.Area({
-                    element: 'area-example',
-                    data: [
+            document.addEventListener("DOMContentLoaded", function (event) {
+                //alert("asdfasdf");
+                    
+                    
+                    // Perform other work here ...
+                    
+                    // Set another completion function for the request above
+                    var url1= "http://emecubo.extremepromotionsproject.xyz/API/obtener/sensor/sa1";
+                    var datos1=jsonParseo(url1);
+                    //console.log(datos1);
+                   
+                   
+
+                   
+            });
+            function jsonParseo(urlEntrada){
+                   var datos=[];
+                 $.ajax({
+                        
+                        json: "callback",
+                        
+                        dataType: "json",
+                        url: urlEntrada,
+                        //url: "https://graph.facebook.com/v2.12/Javier.Aliaga.Rodriguez?fields=feed{created_time,message,description,picture,permalink_url,full_picture,comments.limit(10)}&access_token=EAACEdEose0cBAFFhdeBQX0kCyQpRF8u5QD3Y0HZAaWs9pw4PbtQRQkyPN28iamHkFPFPDnbNUu4nH7ZCRIPqRrxcZCwCxP3cKLcyNlF8wZCJj0q5w3izW9dYyZBUOFy36OVNqYFseDZAJ3tCmdlxIEJsAJygXZBn5Gi8eB9QdIJuZCwLXCkWKLmFApmDRWp2UzwZD",
+                        
+                    })
+                    .done(function( data, textStatus, jqXHR ) {
+                            var datos = [];
+                            var conta =0;
+                            //console.log(data);
+                            // data.forEach(element => {
+                            //     var nombre = element.nombre;
+                            //     var fecha_medida = element.fecha_medida;
+                            //     // console.log("nombre =>" + element.nombre);
+                            //     // console.log("fecha medida =>" + element.fecha_medida);
+                            //     //datos[conta]={fecha_medida,nombre};
+                            //     datos[conta]=element;
+                            //     conta++;
+                            // });
+                            // console.log(datos);
+                            pintarGrafica(data);
+                            if ( console && console.log ) {
+                                console.log( "La solicitud se ha completado correctamente." );
+                            }
+                    })
+                    .fail(function( jqXHR, textStatus, errorThrown ) {
+                            if ( console && console.log ) {
+                                console.log( "La solicitud a fallado: " +  textStatus);
+                            }
+                    });
+                    return datos;
+            }
+            function pintarGrafica(datos){
+
+                    
+                    var dataSensor = [];
+                    
+                    
+                        
+                    datos.forEach(function(element,index) {
+                        
+                        var tupla = {"y": element.fecha_medida, "a":parseInt(element.valor), " b": parseInt(90)};
+                        dataSensor.push(tupla);
+                        
+                        
+                    });
+                   
+                    var dataEjemplo = [
                         { y: '2018-05-01 15:00:00', a: 100, b: 90 },
                         { y: '2018-05-01 15:10:00', a: 75,  b: 65 },
                         { y: '2018-05-01 15:20:00', a: 50,  b: 40 },
@@ -197,7 +263,11 @@ var animal = seleccionado.getAttribute('data-type');
                         { y: '2018-05-01 15:40:00', a: 50,  b: 40 },
                         { y: '2018-05-01 15:50:00', a: 75,  b: 65 },
                         { y: '2018-05-01 16:00:00', a: 100, b: 90 }
-                    ],
+                    ];
+                    Morris.Area({
+                    element: 'area-example',
+                    data: dataEjemplo,
+                    //data: dataSensor,
                     xkey: 'y',
                     ykeys: ['a', 'b'],
                     labels: ['Sensor A', 'Sensor B']
@@ -224,39 +294,19 @@ var animal = seleccionado.getAttribute('data-type');
                         // chart.
                         labels: ['temperatura']
                         });
-                              
+                  }            
             </script>
 
         </div>
     </div>
 </div>
+<script>
 
+var myObj = { "name":"John", "age":31, "city":"New York" };
+var myJSON = JSON.stringify(myObj);
+//window.location = "index.php?x=" + myJSON;
+
+</script>
 </body>
 </html>
 
-<!--
-    http://emecubo.extremepromotionsproject.xyz/API/obtener/
-uno seria el metodo load. rescata datos generados por, en este caso, generaHTML.php y lo asigna a un div (divSelDias).
-
-
-<script type="text/javascript">
- $(document).ready(function(){ //así es como se crean las funciones jQuery. solo cree
-  $("#selMeses").change(function(){ //se ejecuta con el evento onChange
-   var varMes = $(this).val()  //Devuelve el valor del campo, en este caso el select estatico
-   $("#divSelDias").load("generaHTML.php", {paramTipo : 1, paramMes : varMes}, 
-      function(responseText, textStatus, XMLHttpRequest){
-      /*tu función*/
-      }); 
-      //paramTipo es el parametro pasado por metodo POST
-  });//change
-});//ready
-</script>
- 
-
-que te parece.
-
-Exito.
-__________________
-tutoriales xajax, jQuery, PHP y otros en mi blog
-
-    -->
