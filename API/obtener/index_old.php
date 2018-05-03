@@ -1,22 +1,9 @@
- <!--
- ▄▄▄       ██▓     ██▓ ▄▄▄        ▄████  ▄▄▄      
-▒████▄    ▓██▒    ▓██▒▒████▄     ██▒ ▀█▒▒████▄    
-▒██  ▀█▄  ▒██░    ▒██▒▒██  ▀█▄  ▒██░▄▄▄░▒██  ▀█▄  
-░██▄▄▄▄██ ▒██░    ░██░░██▄▄▄▄██ ░▓█  ██▓░██▄▄▄▄██ 
- ▓█   ▓██▒░██████▒░██░ ▓█   ▓██▒░▒▓███▀▒ ▓█   ▓██▒
- ▒▒   ▓▒█░░ ▒░▓  ░░▓   ▒▒   ▓▒█░ ░▒   ▒  ▒▒   ▓▒█░
-  ▒   ▒▒ ░░ ░ ▒  ░ ▒ ░  ▒   ▒▒ ░  ░   ░   ▒   ▒▒ ░
-  ░   ▒     ░ ░    ▒ ░  ░   ▒   ░ ░   ░   ░   ▒   
-      ░  ░    ░  ░ ░        ░  ░      ░       ░  ░
-                                                   
-                                                   -->
-                                                  
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Operaciones con Sensores</title>
+    <title>Operaciones con sensores</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -40,7 +27,7 @@
 <div class="row ">
     <div class="col-12 page-header">
 
-        <h1 class="center">Redirecciones</h1>
+        <h1 class="center">Redirecciones </h1>
     </div>
 </div>
 <div class="row">
@@ -158,6 +145,42 @@
 </div>
 
 
+ <!-- <select id="animales">
+  <option value="1" data-type="perro">Caniche</option>
+  <option value="2" data-type="gato">Siamés</option>
+  <option value="3" data-type="gato">Persa</option>
+  <option value="3" data-type="perro">Pastor alemán</option>
+</select>
+<select id="fruta">
+ <option value="1" data-type="perro">Caniche</option>
+</select>
+<script>
+
+$(function(){
+    $('#animales').change(function(){
+        
+       var seleccionado = $(this).find('option:selected');
+       
+       // 'type' es lo que va a continuación del guión en data-type
+       var animal = seleccionado.data('type');
+       
+       console.log(animal);
+       if(animal=='perro'){
+           //alert("adsf");
+           console.log("perro");
+           $('#fruta').html( "<option>All new content. <em>You bet!</em></option>" );
+
+       }else {
+           console.log("gato");
+           $('#fruta').html( "<option>-------------</option>" );
+       }
+       
+    });
+});
+var animales = document.getElementById('animales');
+var seleccionado = animales.options[animales.selectedIndex];
+var animal = seleccionado.getAttribute('data-type');
+</script> -->
 <div class="container">
 <div class="row">
         <div class="col">
@@ -168,11 +191,18 @@
             document.addEventListener("DOMContentLoaded", function (event) {
                 //alert("asdfasdf");
                     
+                    
+                    // Perform other work here ...
+                    
                     // Set another completion function for the request above
                     var url1= "http://emecubo.extremepromotionsproject.xyz/API/obtener/sensor/sa1";
                     var datos1=jsonParseo(url1);
                     //console.log(datos1);
-              });
+                   
+                   
+
+                   
+            });
             function jsonParseo(urlEntrada){
                    var datos=[];
                  $.ajax({
@@ -217,13 +247,13 @@
                     
                     
                         
-                    // datos.forEach(function(element,index) {
+                    datos.forEach(function(element,index) {
                         
-                    //     var tupla = {"y": element.fecha_medida, "a":parseInt(element.valor), " b": parseInt(90)};
-                    //     dataSensor.push(tupla);
+                        var tupla = {"y": element.fecha_medida, "a":parseInt(element.valor), " b": parseInt(90)};
+                        dataSensor.push(tupla);
                         
                         
-                    // });
+                    });
                    
                     var dataEjemplo = [
                         { y: '2018-05-01 15:00:00', a: 100, b: 90 },
@@ -272,9 +302,9 @@
 </div>
 <script>
 
-// var myObj = { "name":"John", "age":31, "city":"New York" };
-// var myJSON = JSON.stringify(myObj);
-// //window.location = "index.php?x=" + myJSON;
+var myObj = { "name":"John", "age":31, "city":"New York" };
+var myJSON = JSON.stringify(myObj);
+//window.location = "index.php?x=" + myJSON;
 
 </script>
 </body>
