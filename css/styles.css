@@ -1,0 +1,336 @@
+/*************************
+    Estilos generales
+ *************************/
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    
+}
+h1 {
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+a {
+    color: #55B6C4 !important;
+}
+
+.logo {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 6px 12px 8px;
+    
+}
+
+.logo-black {
+    color: #333;
+    border: 6px solid #333;
+    padding: 6px 12px 8px;
+    font-weight: bold;
+}
+
+.underline {
+    border-bottom: 2px solid #55B6C4;
+    padding-bottom: 0.4em;
+    margin-bottom: 1em;
+}
+
+
+/*********** para el menu   *******************/
+
+/* La clase sticky se agrega al encabezado con JS cuando alcanza su posición de desplazamiento */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999
+}
+
+/* Relleno superior al contenido de la página para evitar un movimiento rápido o repentino a medida que el encabezado obtiene una nueva posición en la parte superior de la página */
+
+.sticky+.content {
+    padding-top: 102px;
+}
+
+.header {
+    padding: 10px 16px;
+    background: #fff;
+    color: #333;
+    margin-top: 40px;
+}
+
+.content {
+    padding: 16px;
+}
+
+.margenTop {
+    margin-top: 80px;
+}
+
+.img-fluid {
+    border: 2px dashed;
+}
+
+.no-border.img-fluid {
+    border: inherit;
+}
+
+.nota {
+    background-color: #ffffcc;
+    border-top: 6px solid #ffeb3b;
+}
+
+/*************************
+    Estilos menú
+ *************************/
+
+ #menuOverlay {
+     z-index: 9999;
+ }
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 1);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+    }
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+
+
+.navbar-nav li a,.overlay-content .nav-link{
+     -webkit-transition: all .5s ease-in-out;
+     -moz-transition: all .5s ease-in-out;
+     -o-transition: all .5s ease-in-out;
+     transition: all .5s ease-i
+}
+.navbar-nav li a:hover, #nav li a:hover,
+.overlay-content .nav-link:hover {
+        background: #55B6C4 !important;
+        color: #8E6D0E !important;
+        
+}
+.overlay-content .nav-link:hover {
+    background: #55B6C4 !important;
+    color: #fff !important;
+    font-weight: bolder;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    z-index: 9999;
+}
+
+.overlay  {
+    background:#212529
+}
+.overlay .closebtn:hover {
+
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    rotation: 180deg;
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+}
+
+/*************************
+    Estilos admin Push 
+ *************************/
+ 
+ .circle {
+     border-radius: 50%;
+     background: #fff;
+     padding: 4px 6px;
+     margin-right: 6px;
+    }
+    
+/*************************
+            Maps
+*************************/
+
+
+.alert-success {
+    color: #111111;
+    /* background-color: #8E6D0E; */
+    background: #ffffcc;
+    border: 2px solid #ffeb3b;
+    font-weight: bold;
+    padding-top: 24px;
+    
+} 
+
+
+
+.realizado{
+    display: inline-block;
+    background: #333;
+    padding:4px 16px;
+    color:#fff;
+}
+
+.autor {
+    margin-left:0.6em;
+    display: inline-block;
+    font-weight: bolder;
+}
+
+.current {
+    color:#fff!important;
+    background: #8E6D0E;
+    
+}
+
+/*************************
+          Gráficas
+*************************/
+
+.dir {
+    font-weight:bold;
+}
+/*************************
+          Galeria
+*************************/
+
+
+.gal {
+    -webkit-column-count: 2;
+    /* Chrome, Safari, Opera */
+    -moz-column-count: 2;
+    /* Firefox */
+    column-count: 2;
+}
+
+.gal img {
+    width: 100%;
+    padding: 7px 0;
+}
+
+@media (min-width: 800px)  {
+    .container.mt-5{
+        margin-top: 4rem !important;
+    }
+}
+@media (max-width: 500px) {
+    .gal {
+        -webkit-column-count: 1;
+        /* Chrome, Safari, Opera */
+        -moz-column-count: 1;
+        /* Firefox */
+        column-count: 1;
+    }
+}
+
+
+/* ==================================================* Effecto select *=============================================== */
+#diasMedidas {
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+#diasMedidas:before,
+#diasMedidas:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+#diasMedidas:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+} 
+
+/*************************
+    Estilos admin Push 
+ *************************/
+
+.circle {
+    border-radius: 50%;
+    background: #fff;
+    padding: 4px 10px;
+    margin-right: 6px;
+}
+
+.block {
+    display: block !important;
+}
+
+#blah {
+    max-width: 180px;
+    /* max-height: 180px; */
+}

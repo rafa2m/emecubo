@@ -1,0 +1,49 @@
+/********** genericos **********/
+.block {
+    display: block;
+}
+textarea {
+    width: 100%;
+}
+.cajaChat {
+    max-height: 9em;
+    overflow-y: scroll;
+
+}
+
+.cajaChat ul {
+    padding-left: 0;
+}
+.cajaChat ul li{
+    list-style: none;
+
+}
+ul.striped-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.striped-list > li:nth-of-type(odd) {
+    background-color: #e9e9f9 ;
+}
+ul.striped-list > li {
+    border-bottom: 1px solid rgb(221,221,221);
+    padding: 6px;
+}
+ul.striped-list > li:last-child {
+    border-bottom: none;
+}
+.nombre{
+    display: block;
+    font-weight: bold;
+}
+
+.chatAdmin333{
+  height: 200px;
+  width: 300px;
+  overflow-y: scroll;
+}
+
+.chatAdminMensaje{
+  width: 300px;
+}

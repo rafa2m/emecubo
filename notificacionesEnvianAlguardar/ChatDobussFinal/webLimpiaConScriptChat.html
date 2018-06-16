@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>YOur WeB</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+               crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+               integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+               crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">
+         var divIframe=document.createElement('div');
+         divIframe.id='divIframe';
+         divIframe.style.cssText='width:280px;height:350px;padding:2em 1em 1em 1em;background:#555';
+         $(divIframe).draggable().append('<iframe src="https://pwa.desarrollando-web.es/ChatDobussFinal/clientNameLog.php" height="100%" width="100%" background:#fff">').appendTo(document.getElementsByTagName('body')[0]);
+       </script>
+
+  </body>
+</html>

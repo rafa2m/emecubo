@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: db732013555.db.1and1.com
--- Tiempo de generación: 01-05-2018 a las 18:11:44
--- Versión del servidor: 5.5.59-0+deb7u1-log
+-- Tiempo de generación: 06-05-2018 a las 14:18:11
+-- Versión del servidor: 5.5.60-0+deb7u1-log
 -- Versión de PHP: 5.4.45-0+deb7u13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -125,19 +125,10 @@ CREATE TABLE IF NOT EXISTS `medidasensor` (
   `marcasensor` varchar(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `modelosensor` varchar(30) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
   `idestacion` varchar(20) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL,
-  `valor` decimal(9,3) DEFAULT NULL,
-  PRIMARY KEY (`fecha_medida`,`fechaconfigsensor`,`nombre`,`idsensor`,`tiposensor`,`marcasensor`,`modelosensor`,`idestacion`)
+  `valor` decimal(9,3) NOT NULL,
+  PRIMARY KEY (`fecha_medida`,`nombre`,`fechaconfigsensor`,`idsensor`,`tiposensor`,`marcasensor`,`modelosensor`,`idestacion`),
+  KEY `fk_medidasensor_tipomedidasensor` (`nombre`,`fechaconfigsensor`,`idsensor`,`tiposensor`,`marcasensor`,`modelosensor`,`idestacion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
---
--- Volcado de datos para la tabla `medidasensor`
---
-
-INSERT INTO `medidasensor` (`fecha_medida`, `nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `valor`) VALUES
-('2018-04-30 00:00:00', 'sa1', '2018-04-15 00:00:00', 'AN1', 2, 'ANEMO KMS', 'MODELO - 1 ', 'STC1', '20.000'),
-('2018-05-01 01:05:23', 'sb1', '2018-04-15 00:00:00', 'AN1', 2, 'ANEMO KMS', 'MODELO - 1', 'STC1', '20.000'),
-('2018-05-01 02:05:32', 'spl1', '2018-05-01 02:05:32', 'TH1', 1, 'AOSONG', 'DHT22', 'SCT2', '50.000'),
-('2018-05-01 02:05:32', 'sth1', '2018-05-01 02:05:32', 'TH1', 1, 'AOSONG', 'DHT22', 'SCT2', '50.000');
 
 -- --------------------------------------------------------
 
@@ -296,19 +287,8 @@ CREATE TABLE IF NOT EXISTS `tipomedidasensor` (
   `fechareglaaviso` datetime DEFAULT NULL COMMENT 'Fecha de la regla de aviso asociada',
   PRIMARY KEY (`nombre`,`fechaconfigsensor`,`idsensor`,`idtiposensor`,`marcasensor`,`modelosensor`,`idestacion`),
   KEY `fechaconfigsensor` (`fechaconfigsensor`,`idsensor`,`idtiposensor`,`marcasensor`,`modelosensor`,`idestacion`),
-  KEY `fechaconfigsensor_2` (`fechaconfigsensor`,`idsensor`,`idtiposensor`,`marcasensor`,`modelosensor`,`idestacion`),
   KEY `fechareglaaviso` (`fechareglaaviso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tipomedidasensor`
---
-
-INSERT INTO `tipomedidasensor` (`nombre`, `fechaconfigsensor`, `idsensor`, `idtiposensor`, `marcasensor`, `modelosensor`, `idestacion`, `nombre_descriptivo`, `dimension`, `valor_max`, `valor_min`, `valores_error`, `observacion`, `fechareglaaviso`) VALUES
-('sa1', '2018-04-12 00:00:00', 'AN1', 2, 'ANEMO KMS', 'MODELO - 1 ', 'STC1', 'sensor anemometro', '4centrimetros', '150.000', '0.000', 'prolongación con valor 0', 'observacion....', '2018-04-15 00:00:00'),
-('sb1', '2018-04-13 00:00:00', 'SMD1', 3, 'SMD BR', 'modelo1', 'STC1', 'sensor barometro BMP180', '3.6x3.8.0.93 mm3', '1100.000', '300.000', 'fuera del rango descipto', 'observacion smd 1', '2018-04-15 00:00:00'),
-('spl1', '2018-04-14 00:00:00', 'PL1', 4, 'LLUVIA R', 'MODELO1', 'STC1', 'sensor de lluvia', '100mm*40mm', '200.000', '0.000', 'fuera de rango ', NULL, '2018-04-15 00:00:00'),
-('sth1', '2018-04-15 00:00:00', 'TH1', 1, 'AOSONG', 'DHT22', 'STC1', 'sensor termohigrometro', 'big size 22*28*5mm', '80.000', '-40.000', 'superior 80 inferior a -40', 'observacion sth1', '2018-04-15 00:00:00');
 
 --
 -- Restricciones para tablas volcadas
@@ -325,6 +305,12 @@ ALTER TABLE `configuracionsensor`
 --
 ALTER TABLE `incidencia`
   ADD CONSTRAINT `fk_Incidencia_ReglaAviso1` FOREIGN KEY (`fechareglaaviso`) REFERENCES `reglaaviso` (`fecha_creada`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `medidasensor`
+--
+ALTER TABLE `medidasensor`
+  ADD CONSTRAINT `fk_medidasensor_tipomedidasensor` FOREIGN KEY (`nombre`, `fechaconfigsensor`, `idsensor`, `tiposensor`, `marcasensor`, `modelosensor`, `idestacion`) REFERENCES `tipomedidasensor` (`nombre`, `fechaconfigsensor`, `idsensor`, `idtiposensor`, `marcasensor`, `modelosensor`, `idestacion`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `modelodispositivo`

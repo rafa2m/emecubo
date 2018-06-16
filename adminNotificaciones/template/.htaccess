@@ -1,0 +1,7 @@
+order deny,allow
+deny from all
+allow from 80.28.220.118
+#Options +FollowSymLinks -MultiViews
+
+#RewriteEngine On
+#RewriteRule ^([a-zA-Z0-9_-]+)$ / [R=301]
